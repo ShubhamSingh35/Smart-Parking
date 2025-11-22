@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Parking System - Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Firebase (optional) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <!-- Leaflet fallback map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Smart Parking System</h1>
+    <div id="auth-area">
+      <button id="sign-in-btn">Sign in (Firebase)</button>
+      <button id="guest-btn">Continue as Guest</button>
+      <span id="user-info"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="left">
+      <div class="controls">
+        <input id="search" placeholder="Search location..." />
+        <button id="refresh">Refresh slots</button>
+      </div>
+      <ul id="locations-list"></ul>
+    </section>
+
+    <section class="right">
+      <div id="map" aria-label="Map"></div>
+      <div id="status">Status: <span id="status-text">Demo mode</span></div>
+    </section>
+  </main>
+
+  <template id="location-item">
+    <li class="location">
+      <h3 class="loc-name"></h3>
+      <p class="loc-address"></p>
+      <div class="slots">
+        <span class="slot free"></span>
+        <span class="slot occupied"></span>
+        <span class="slot reserved"></span>
+      </div>
+      <button class="toggle-book">Toggle one slot</button>
+    </li>
+  </template>
+
+  <script src="firebase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
